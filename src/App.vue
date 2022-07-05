@@ -1,7 +1,14 @@
 <template>
   <h1 class="text-3xl font-bold">The decoded value in QR/barcode is</h1>
   <h1 class="text-2xl font-bold p-3">{{ result }}</h1>
+  <button
+    @click.prevent="start"
+    class="bg-green-500 py-2 px-8 text-xl font-bold mb-5"
+  >
+    start/close
+  </button>
   <StreamBarcodeReader
+    v-if="isVisual"
     @decode="onDecode"
     @loaded="onLoaded"
     :camera="front"
@@ -21,6 +28,7 @@ export default {
   data() {
     return {
       result: "",
+      isVisual: false,
     };
   },
   methods: {
@@ -29,6 +37,9 @@ export default {
         return;
       }
       this.result = result;
+    },
+    start() {
+      this.isVisual = !this.isVisual;
     },
   },
 };
