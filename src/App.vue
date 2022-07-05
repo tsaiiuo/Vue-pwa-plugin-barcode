@@ -1,9 +1,12 @@
 <template>
+  <h1 class="text-3xl font-bold">The decoded value in QR/barcode is</h1>
+  <h1 class="text-2xl font-bold p-3">{{ result }}</h1>
   <StreamBarcodeReader
     @decode="onDecode"
     @loaded="onLoaded"
     :camera="front"
   ></StreamBarcodeReader>
+  <h1 class="text-2xl font-bold p-5">npm: vue-barcode-reader</h1>
 </template>
 
 <script>
@@ -15,12 +18,17 @@ export default {
     HelloWorld,
     StreamBarcodeReader,
   },
+  data() {
+    return {
+      result: "",
+    };
+  },
   methods: {
     onDecode(result) {
       if (result === "172018300784437") {
         return;
       }
-      console.log(result);
+      this.result = result;
     },
   },
 };
