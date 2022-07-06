@@ -31,7 +31,7 @@
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
-import { StreamBarcodeReader } from "vue-barcode-reader";
+import { StreamBarcodeReader } from "./vue-barcode-reader/src/index";
 export default {
   name: "App",
   components: {
