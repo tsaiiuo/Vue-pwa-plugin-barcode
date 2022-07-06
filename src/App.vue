@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center items-center group">
+  <div class="flex flex-col justify-center items-center group w-full">
     <img
       v-if="!isVisual"
       class="animate-bounce"
@@ -14,6 +14,7 @@
     </h1>
     <h1 v-if="isVisual" class="text-2xl font-bold p-3">{{ result }}</h1>
     <StreamBarcodeReader
+      class="w-full"
       v-if="isVisual"
       @decode="onDecode"
       @loaded="onLoaded"
