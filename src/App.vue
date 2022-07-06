@@ -1,19 +1,31 @@
 <template>
-  <h1 class="text-3xl font-bold">The decoded value in QR/barcode is</h1>
-  <h1 class="text-2xl font-bold p-3">{{ result }}</h1>
-  <button
-    @click.prevent="start"
-    class="bg-green-500 py-2 px-8 text-xl font-bold mb-5"
-  >
-    start/close
-  </button>
-  <StreamBarcodeReader
-    v-if="isVisual"
-    @decode="onDecode"
-    @loaded="onLoaded"
-    :camera="front"
-  ></StreamBarcodeReader>
-  <h1 class="text-2xl font-bold p-5">npm: vue-barcode-reader</h1>
+  <div class="flex flex-col justify-center items-center group">
+    <img
+      v-if="!isVisual"
+      class="animate-bounce"
+      src="./assets/logo.png"
+      alt=""
+    />
+    <h1 v-if="!isVisual" class="text-3xl font-bold p-5 mb-4">
+      Vue-barcode/qrcode-reader
+    </h1>
+    <h1 v-if="isVisual" class="text-3xl font-bold">
+      The decoded value in QR/barcode is
+    </h1>
+    <h1 v-if="isVisual" class="text-2xl font-bold p-3">{{ result }}</h1>
+    <StreamBarcodeReader
+      v-if="isVisual"
+      @decode="onDecode"
+      @loaded="onLoaded"
+      :camera="front"
+    ></StreamBarcodeReader>
+    <button
+      @click.prevent="start"
+      class="bg-green-500 py-2 px-8 text-xl font-bold group-hover:scale-110 mt-3 transition delay-150 duration-300 ease-in-out"
+    >
+      start/close
+    </button>
+  </div>
 </template>
 
 <script>
